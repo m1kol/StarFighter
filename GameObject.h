@@ -20,7 +20,7 @@ class RigidBody : public ComponentType {
     RigidBody();
     ~RigidBody();
 public:
-    float mass, velocity_x, velocity_y, x, y, acceleration_x, acceleration_y;
+    float mass, velocity_x, velocity_y, acceleration_x, acceleration_y;
 };
 
 class Collider : public ComponentType {
@@ -41,8 +41,9 @@ public:
 
 class GameObject {
 public:
+    std::vector<int> transform;
     std::vector<ComponentType*> Components;
-    void addComponent(ComponentType* component) {
-        Components.push_back(component);
-    };
+    void addComponent(ComponentType* component);
+    void Translate(std::vector<int> transform, std::vector<int> direction);
+    void Rotate();
 };
