@@ -1,12 +1,14 @@
-//
-// Created by ann on 08.04.18.
-//
-
 #include "Application.h"
+void mainloop() {
+    while (window) {
+        std::cout<<"Отрисовочка";
+    }
+}
 
 Application::Application() {
     sf::RenderWindow Window(sf::VideoMode(200, 200), "Game");
     window = &Window;
+    mainloop();
 }
 
 sf::RenderWindow& Application::windowID() {
