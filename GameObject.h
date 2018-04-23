@@ -2,10 +2,6 @@
 // Created by ann on 18.04.18.
 //
 
-#ifndef CPP_MIPT_GAME_PROJECT_GAMEOBJECT_H
-#define CPP_MIPT_GAME_PROJECT_GAMEOBJECT_H
-
-#endif //CPP_MIPT_GAME_PROJECT_GAMEOBJECT_H
 #include <vector>
 #include <iostream>
 #include <SFML/Graphics/Sprite.hpp>
@@ -17,7 +13,7 @@ class ComponentType {
 
 
 class RigidBody : public ComponentType {
-    RigidBody();
+    RigidBody(float _mass, float _velocity_x, float _velocity_y, float _acceleration_x, float _acceleration_y );
     ~RigidBody();
 public:
     float mass, velocity_x, velocity_y, acceleration_x, acceleration_y;
@@ -32,11 +28,12 @@ public:
 };
 
 class Render : public ComponentType {
-    Render();
+    Render(sf::Texture _texture, sf::Sprite _sprite);
     ~Render();
 public:
+    sf::Texture texture;
     sf::Sprite sprite;
-    void draw() {};
+    void draw();
 };
 
 class GameObject {

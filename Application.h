@@ -6,6 +6,9 @@
 #define SINGLETONE_APPLICATION_H
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "GameObject.cpp"
+#include "GameObject.h"
+
 
 //Класс синглтон, который дает возможность создать единственное окно, в котором будут происходить все действия и отрисовываться объекты
 class Application
@@ -17,13 +20,15 @@ private:
     Application();
     Application( const Application& );
     Application& operator=( Application& );
-    sf::RenderWindow& windowID();
+
 public:
     static Application * getInstance() {
         if(!p_instance)
             p_instance = new Application();
         return p_instance;
     }
+    int size = 0;
+    sf::RenderWindow windowID = *window;
 };
 
 
