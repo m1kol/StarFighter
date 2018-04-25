@@ -2,12 +2,10 @@ cmake_minimum_required(VERSION 3.10)
 project(StarFighter)
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "-g -Wall -lsfml-graphics -lsfml-window -lsfml-system")
+set(CMAKE_CXX_FLAGS "-g -Wall")
 
-add_executable(StarFighter.out
-        Application.cpp
-        Application.h
-        GameObject.cpp
-        GameObject.h
-        main.cpp
-        )
+add_library(application Application.h Application.cpp)
+add_library(gameobject GameObject.h GameObject.cpp)
+add_executable(StarFighter.out main.cpp)
+
+target_link_libraries(StarFighter.out application gameobject)
