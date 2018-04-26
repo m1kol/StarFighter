@@ -19,6 +19,10 @@ void GameObject::addComponent (const ComponentType &component) {
     components.push_back(component);
 }
 
+ComponentType::ComponentType() {}
+
+ComponentType::~ComponentType() {}
+
 Render::Render (sf::Texture _texture, sf::Sprite _sprite) {
     texture = _texture;
     sprite = _sprite;
