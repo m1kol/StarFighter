@@ -1,7 +1,5 @@
-#include "Application.h"
+#include "../headers/Application.h"
 #include <SFML/Window.hpp>
-
-void mainloop();
 
 Application::Application() {
 //    sf::RenderWindow Window(sf::VideoMode(200, 200), "Game");

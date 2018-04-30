@@ -1,5 +1,5 @@
 #include <SFML/Graphics/Texture.hpp>
-#include "GameObject.h"
+#include "../headers/GameObject.h"
 
 //векторы направления движения direction
 std::vector<int> left(-1,0);

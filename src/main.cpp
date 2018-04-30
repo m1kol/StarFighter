@@ -1,4 +1,4 @@
-#include "Application.h"
+#include "../headers/Application.h"
 
 int main() {
     Application* instance = Application::getInstance();
