@@ -30,7 +30,4 @@ public:
     }
 };
 
-
-
-
 #endif //SINGLETONE_APPLICATION_H

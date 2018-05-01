@@ -12,7 +12,7 @@ public:
 };
 
 
-class RigidBody : public ComponentType {
+class RigidBody: public ComponentType {
 public:
 
     RigidBody(float _velocity_x, float _velocity_y);
@@ -20,7 +20,7 @@ public:
     float mass, velocity_x, velocity_y, acceleration_x, acceleration_y;
 };
 
-class Collider : public ComponentType {
+class Collider: public ComponentType {
 public:
 
     Collider();
@@ -29,7 +29,7 @@ public:
     void resolveCollision();
 };
 
-class Render : public ComponentType {
+class Render: public ComponentType {
     sf::Texture texture;
     sf::Sprite sprite;
 
