@@ -3,30 +3,33 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
-#include "GameObject.h"
+//#include "GameObject.h"
+#include <iostream>
 
 //Класс синглтон, который дает возможность создать единственное окно, в котором будут происходить все действия и отрисовываться объекты
 class Application {
 
-    static Application* p_instance;
-    sf::RenderWindow* window;
-    std::vector<GameObject*> allObjects;
-//    sf::RenderWindow windowID = *window;
+private:
+    sf::RenderWindow* ptrwindow;
+    Application();
+    ~Application();
 
-    Application ();
-    Application (const Application&);
-    Application& operator= (Application&);
+
+//    Application(const  Application&) = delete;
+//    Application& operator=(const Application&) = delete;
+
+//    void* operator delete(void*) = delete;
+//    void*operator delete[](void*) = delete;
 
 public:
-
-    static Application* getInstance() {
-        if(!p_instance)
-            p_instance = new Application();
-        return p_instance;
+    static Application& getInst() {
+        static Application object;
+        return object;
     }
+//    std::vector<GameObject*> allObjects;
 
-    sf::RenderWindow* getWindow () {
-        return window;
+    sf::RenderWindow* getWindow() {
+        return Application::ptrwindow;
     }
 };
 

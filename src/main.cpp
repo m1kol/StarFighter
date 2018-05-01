@@ -1,7 +1,8 @@
 #include "../headers/Application.h"
 
+
 int main() {
-    Application* instance = Application::getInstance();
-    instance->getWindow();
+    auto& s = Application::getInst();
+    sf::RenderWindow* ss = s.getWindow();
     return 0;
 }
