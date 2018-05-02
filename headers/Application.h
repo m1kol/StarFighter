@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
-//#include "GameObject.h"
+#include "GameObject.h"
 #include <iostream>
 
 //Класс синглтон, который дает возможность создать единственное окно, в котором будут происходить все действия и отрисовываться объекты
