@@ -31,9 +31,16 @@ public:
 
 class Render : public ComponentType {
 public:
-    Render();
+    Render(std::string F, float X, float Y, float W, float H);
     ~Render();
     void draw();
+
+private:
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::Image image;
+    float x,y, height, width;
+    std::string F;
 };
 
 class GameObject {
