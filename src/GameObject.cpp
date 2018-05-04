@@ -17,10 +17,9 @@ Collider::Collider() {}
 Collider::~Collider() {}
 
 Render::Render (std::string File, float X, float Y, float W, float H) {
-    File = F;
+    F = File;
     width = W; height = H;
-    image.loadFromFile(File);
-    image.createMaskFromColor(sf::Color(41, 33, 59));
+    image.loadFromFile(F);
     texture.loadFromImage(image);
     sprite.setTexture(texture);
     x = X; y = Y;
@@ -35,7 +34,7 @@ GameObject::GameObject() {}
 
 GameObject::~GameObject() {}
 
-void GameObject::addComponent (const ComponentType &component) {
+void GameObject::addComponent (const ComponentType component) {
     components.push_back(component);
 }
 void GameObject::translate () {}

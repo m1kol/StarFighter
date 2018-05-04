@@ -31,7 +31,7 @@ public:
 
 class Render : public ComponentType {
 public:
-    Render(std::string F, float X, float Y, float W, float H);
+    Render(std::string File, float X, float Y, float W, float H);
     ~Render();
     void draw();
 
@@ -47,7 +47,7 @@ class GameObject {
 public:
     GameObject();
     ~GameObject();
-    void addComponent(const ComponentType& component);
+    void addComponent(const ComponentType component);
     void translate();
     void rotate();
 
