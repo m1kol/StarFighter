@@ -5,6 +5,7 @@
 #include <memory>
 #include "GameObject.h"
 #include <iostream>
+#include <typeinfo>
 
 //Класс синглтон, который дает возможность создать единственное окно, в котором будут происходить все действия и отрисовываться объекты
 class Application {
@@ -26,11 +27,14 @@ public:
         static Application object;
         return object;
     }
-//    std::vector<GameObject*> allObjects;
-
+    void createObject(GameObject Obj); //Добавляет новый объект в вектор, содержащий все объекты типа GameObject
+    void createRObject(GameObject Obj);// При наличиии компоненты Render, добавляет ее в вектор RObjects
+    std::vector<GameObject> allObjects;
+    std::vector<Render>RObjects;
     sf::RenderWindow* getWindow() {
         return Application::ptrwindow;
     }
+
 };
 
 

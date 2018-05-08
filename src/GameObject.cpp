@@ -16,6 +16,7 @@ Collider::Collider() {}
 
 Collider::~Collider() {}
 
+
 Render::Render (std::string File, float X, float Y, float W, float H) {
     F = File;
     width = W; height = H;
@@ -36,6 +37,10 @@ GameObject::~GameObject() {}
 
 void GameObject::addComponent (const ComponentType component) {
     components.push_back(component);
+}
+
+ComponentType GameObject::getComponent(int a) {
+    return components[a];
 }
 void GameObject::translate () {}
 

@@ -14,11 +14,24 @@ Application::Application() {
         }
 
         window.clear();
+        for (int i = 0; i < RObjects.size() ; ++i) {
+            window.draw(RObjects[i].sprite);
+        }
         window.display();
     }
+    }
 
-    //создаем массив из геймобджектов AllObjects, mainloop() нужно пройтись по всем созданным объектам, проверить
-    // их на наличие компоненты Render и при обнаружении запустить функцию draw()
+void Application::createObject(GameObject Obj) {
+    allObjects.push_back(Obj);
+}
+
+void Application::createRObject(GameObject Obj) {
+    ComponentType Test_Render = Obj.getComponent(0);
+    ComponentType *ptrObj = &Test_Render;
+    if(Render *R_Obj = dynamic_cast<Render*>(ptrObj)) {
+        RObjects.push_back(*R_Obj);
+    }
 }
 
 Application::~Application() {}
+
