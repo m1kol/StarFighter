@@ -9,6 +9,7 @@ class ComponentType {
 public:
     ComponentType();
     ~ComponentType();
+    std::string str;
     virtual std::string MakePolymorphism() {}; //это дерьмо я делаю, чтобы использовать dynamic_cast<>()
 };
 
@@ -37,7 +38,11 @@ class Render : public ComponentType {
 public:
     Render(std::string File, float X, float Y, float W, float H);
     ~Render();
-    std::string MakePolymorphism() {};
+
+    std::string MakePolymorphism()
+    {
+        return "Renderer";
+    };
     void draw();
     sf::Texture texture;
     sf::Sprite sprite;
@@ -51,14 +56,16 @@ class GameObject {
 public:
     GameObject();
     ~GameObject();
-    void addComponent(const ComponentType component);
+    std::vector<ComponentType> components;
+
+    void addComponent(ComponentType component);
     ComponentType getComponent(int a);
     void translate();
     void rotate();
 
 private:
     std::vector<int> coordinates[2];
-    std::vector<ComponentType> components;
+//  std::vector<ComponentType> components;
 };
 
 #endif

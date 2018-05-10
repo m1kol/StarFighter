@@ -34,6 +34,7 @@ public:
     sf::RenderWindow* getWindow() {
         return Application::ptrwindow;
     }
+    void  run();
 
 };
 

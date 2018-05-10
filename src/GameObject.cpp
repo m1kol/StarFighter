@@ -25,6 +25,8 @@ Render::Render (std::string File, float X, float Y, float W, float H) {
     sprite.setTexture(texture);
     x = X; y = Y;
     sprite.setTextureRect(sf::IntRect(0, 0, width, height));
+
+    ComponentType::str = "Render";
 }
 
 Render::~Render() {}
@@ -35,7 +37,7 @@ GameObject::GameObject() {}
 
 GameObject::~GameObject() {}
 
-void GameObject::addComponent (const ComponentType component) {
+void GameObject::addComponent (ComponentType component) {
     components.push_back(component);
 }
 

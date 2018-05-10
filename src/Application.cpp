@@ -2,36 +2,55 @@
 #include <SFML/Window.hpp>
 
 Application::Application() {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "Game");
-    ptrwindow = &window;
-    while (window.isOpen())
+    ptrwindow = new sf::RenderWindow(sf::VideoMode(700, 700), "Game");
+}
+
+void  Application::run() {
+    while (ptrwindow->isOpen())
     {
         sf::Event event;
-        while (window.pollEvent(event))
+
+        while (ptrwindow->pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                window.close();
+                ptrwindow->close();
         }
 
-        window.clear();
-        for (int i = 0; i < RObjects.size() ; ++i) {
-            window.draw(RObjects[i].sprite);
+        ptrwindow->clear();
+        for (int i = 0; i < RObjects.size() ; i++) {
+            ptrwindow->draw(RObjects[i].sprite);
         }
-        window.display();
+        ptrwindow->display();
     }
-    }
+}
+
 
 void Application::createObject(GameObject Obj) {
     allObjects.push_back(Obj);
 }
 
 void Application::createRObject(GameObject Obj) {
+    std::cout << "Here!";
+    fflush(0);
+
+    ComponentType st;
+    st = Obj.getComponent(0);
+    std::cout << st.str<<"String"<<"\n";
+
     ComponentType Test_Render = Obj.getComponent(0);
     ComponentType *ptrObj = &Test_Render;
-    if(Render *R_Obj = dynamic_cast<Render*>(ptrObj)) {
+
+
+    Render *R_Obj = dynamic_cast<Render*>(ptrObj);
+    std::cout << "\n\nR_Obj == " << R_Obj << std::endl << Obj.components.size() << "\n";
+    if(R_Obj) {
+        std::cout << "Found!";
+        fflush(0);
         RObjects.push_back(*R_Obj);
     }
 }
 
-Application::~Application() {}
+Application::~Application() {
+    delete ptrwindow;
+}
 
