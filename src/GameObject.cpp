@@ -12,7 +12,18 @@ RigidBody::RigidBody () {}
 RigidBody::~RigidBody() {}
 
 
-Collider::Collider() {}
+Collider::Collider(float X, float Y, float W, float H) {
+    x = X; y = Y;
+    width = W; height = H;
+    sf::IntRect r1(x, y, width, height);
+}
+
+void Collider::detectCollision(Collider *Object) {
+    if (r1.intersects(Object->r1))//если прямоугольник спрайта объекта пересекается с игроком
+    {
+        std::cout << "Collision" << "\n";
+    }
+}
 
 Collider::~Collider() {}
 

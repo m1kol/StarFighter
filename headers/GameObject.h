@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/Rect.hpp>
 
 class ComponentType {
 public:
@@ -11,6 +12,23 @@ public:
     ~ComponentType();
     std::string str;
     virtual std::string MakePolymorphism() {}; //это дерьмо я делаю, чтобы использовать dynamic_cast<>()
+    float x,y, width, height;
+};
+
+class GameObject {
+public:
+    GameObject();
+    ~GameObject();
+    std::vector<ComponentType*> components;
+
+    void addComponent(ComponentType &component);
+    ComponentType *getComponent(int a);
+    void translate();
+    void rotate();
+
+private:
+    std::vector<int> coordinates[2];
+//  std::vector<ComponentType> components;
 };
 
 
@@ -28,8 +46,10 @@ public:
 class Collider : public ComponentType {
 public:
 
-    Collider();
+    Collider(float X, float Y, float W, float H);
     ~Collider();
+    sf::IntRect r1;
+    void detectCollision(Collider* Object);
     std::string MakePolymorphism() {};
 };
 
@@ -47,25 +67,10 @@ public:
     sf::Texture texture;
     sf::Sprite sprite;
     sf::Image image;
-    float x,y, height, width;
     std::string F;
 };
 
 
-class GameObject {
-public:
-    GameObject();
-    ~GameObject();
-    std::vector<ComponentType*> components;
 
-    void addComponent(ComponentType &component);
-    ComponentType *getComponent(int a);
-    void translate();
-    void rotate();
-
-private:
-    std::vector<int> coordinates[2];
-//  std::vector<ComponentType> components;
-};
 
 #endif

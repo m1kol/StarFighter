@@ -27,10 +27,10 @@ public:
         static Application object;
         return object;
     }
-    void createObject(GameObject Obj); //Добавляет новый объект в вектор, содержащий все объекты типа GameObject
-    void createRObject(GameObject Obj);// При наличиии компоненты Render, добавляет ее в вектор RObjects
-    std::vector<GameObject> allObjects;
-    std::vector<Render>RObjects;
+
+//    std::vector<GameObject*> allObjects;
+    std::vector<Render*>R_Objects;
+    std::vector<Collider*>C_Objects;
     sf::RenderWindow* getWindow() {
         return Application::ptrwindow;
     }
