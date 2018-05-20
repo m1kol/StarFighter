@@ -33,18 +33,18 @@ void Application::createRObject(GameObject Obj) {
     std::cout << "Here!";
     fflush(0);
 
-    ComponentType st;
-    st = Obj.getComponent(0);
-    std::cout << st.str<<"String"<<"\n";
+    ComponentType *st = Obj.getComponent(0);
+    std::cout << st->str << "String" << "\n";
 
-    ComponentType Test_Render = Obj.getComponent(0);
-    ComponentType *ptrObj = &Test_Render;
+//    ComponentType Test_Render = Obj.getComponent(0);
+    ComponentType *ptrObj = Obj.getComponent(0);
 
 
-    Render *R_Obj = dynamic_cast<Render*>(ptrObj);
+    Render *R_Obj = (Render*) ptrObj;
     std::cout << "\n\nR_Obj == " << R_Obj << std::endl << Obj.components.size() << "\n";
     if(R_Obj) {
         std::cout << "Found!";
+        std::cout << R_Obj->texture.getSize().x;
         fflush(0);
         RObjects.push_back(*R_Obj);
     }

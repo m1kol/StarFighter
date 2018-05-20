@@ -56,10 +56,10 @@ class GameObject {
 public:
     GameObject();
     ~GameObject();
-    std::vector<ComponentType> components;
+    std::vector<ComponentType*> components;
 
-    void addComponent(ComponentType component);
-    ComponentType getComponent(int a);
+    void addComponent(ComponentType &component);
+    ComponentType *getComponent(int a);
     void translate();
     void rotate();
 

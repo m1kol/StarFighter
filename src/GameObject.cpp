@@ -37,11 +37,11 @@ GameObject::GameObject() {}
 
 GameObject::~GameObject() {}
 
-void GameObject::addComponent (ComponentType component) {
-    components.push_back(component);
+void GameObject::addComponent (ComponentType &component) {
+    components.push_back(&component);
 }
 
-ComponentType GameObject::getComponent(int a) {
+ComponentType *GameObject::getComponent(int a) {
     return components[a];
 }
 void GameObject::translate () {}

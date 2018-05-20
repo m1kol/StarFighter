@@ -15,7 +15,7 @@ int main() {
     s.run();
 
 
-    std::vector<ComponentType> C;
+    std::vector<ComponentType*> C;
     C = Ball.components;
     std::cout << C.size();
 
