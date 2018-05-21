@@ -6,12 +6,15 @@
 #include "GameObject.h"
 #include <iostream>
 #include <typeinfo>
+#include <SFML/Graphics/Rect.hpp>
+#include "script star.h"
 
+using namespace sf;
 //Класс синглтон, который дает возможность создать единственное окно, в котором будут происходить все действия и отрисовываться объекты
 class Application {
 
 private:
-    sf::RenderWindow* ptrwindow;
+    RenderWindow* ptrwindow;
     Application();
     ~Application();
 
@@ -31,10 +34,11 @@ public:
 //    std::vector<GameObject*> allObjects;
     std::vector<Render*>R_Objects;
     std::vector<Collider*>C_Objects;
-    sf::RenderWindow* getWindow() {
+    RenderWindow* getWindow() {
         return Application::ptrwindow;
     }
     void  run();
+    float time;
 
 };
 
