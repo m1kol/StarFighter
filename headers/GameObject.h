@@ -49,7 +49,7 @@ public:
     Collider(float X, float Y, float W, float H);
     ~Collider();
     sf::IntRect r1;
-    void detectCollision(Collider* Object);
+    bool detectCollision(Collider* Object);
     std::string MakePolymorphism() {};
 };
 

@@ -18,11 +18,9 @@ Collider::Collider(float X, float Y, float W, float H) {
     sf::IntRect r1(x, y, width, height);
 }
 
-void Collider::detectCollision(Collider *Object) {
-    if (r1.intersects(Object->r1))//если прямоугольник спрайта объекта пересекается с игроком
-    {
-        std::cout << "Collision" << "\n";
-    }
+bool Collider::detectCollision(Collider *Object) {
+    if (r1.intersects(Object->r1))//если прямоугольники спрайтов пересекаются
+         return true;
 }
 
 Collider::~Collider() {}

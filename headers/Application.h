@@ -38,6 +38,7 @@ public:
         return Application::ptrwindow;
     }
     void  run();
+    void update();
     float time;
 
 };

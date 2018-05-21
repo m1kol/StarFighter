@@ -32,6 +32,19 @@ void  Application::run() {
     }
 }
 
+void Application::update() {
+    int a = C_Objects.size();
+    for (int i = 0; i < a; ++i) {
+        for (int k = 0; k < a; ++k) {
+            if(i!=k){
+                std::cout << "PredCollision"<< "\n";
+                if(C_Objects[i]->detectCollision(C_Objects[k])) {
+                    std::cout << "Collision"<< "\n";
+                }
+            }
+        }
+    }
+}
 
 Application::~Application() {
     delete ptrwindow;
