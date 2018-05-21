@@ -32,6 +32,24 @@ private:
 };
 
 
+class Render : public ComponentType {
+public:
+    Render(std::string File, float X, float Y, float W, float H);
+    ~Render();
+
+    std::string MakePolymorphism()
+    {
+        return "Renderer";
+    };
+    void draw();
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::Image image;
+    float x, y, width, height;
+    sf::IntRect rect;
+    std::string F;
+};
+
 class RigidBody : public ComponentType {
 public:
 
@@ -46,29 +64,14 @@ public:
 class Collider : public ComponentType {
 public:
 
-    Collider(float X, float Y, float W, float H);
+    Collider(Render *Object);
     ~Collider();
     sf::IntRect r1;
-    bool detectCollision(Collider* Object);
+    bool detectCollision(Render *Object);
     std::string MakePolymorphism() {};
 };
 
 
-class Render : public ComponentType {
-public:
-    Render(std::string File, float X, float Y, float W, float H);
-    ~Render();
-
-    std::string MakePolymorphism()
-    {
-        return "Renderer";
-    };
-    void draw();
-    sf::Texture texture;
-    sf::Sprite sprite;
-    sf::Image image;
-    std::string F;
-};
 
 
 

@@ -28,12 +28,12 @@ GameObject* create_R_Object(std::string File, float X, float Y, float W, float H
     make_Render(&Object, app );
     return &Object;
 }
-
-GameObject* create_R_and_C_Object(std::string File, float X, float Y, float W, float H) {
-    GameObject Object;
-    Render Render_Object(File, X, Y, W, H);
-    Object.addComponent(Render_Object);
-    Collider Collider_Object(X, Y, W, H);
-    Object.addComponent(Collider_Object);
-    return &Object;
-}
+//
+//GameObject* create_R_and_C_Object(std::string File, float X, float Y, float W, float H) {
+//    GameObject Object;
+//    Render Render_Object(File, X, Y, W, H);
+//    Object.addComponent(Render_Object);
+//    Collider Collider_Object(X, Y, W, H);
+//    Object.addComponent(Collider_Object);
+//    return &Object;
+//}

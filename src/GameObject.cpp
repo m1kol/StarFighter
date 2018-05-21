@@ -7,33 +7,15 @@ ComponentType::ComponentType() {}
 ComponentType::~ComponentType() {}
 
 
-RigidBody::RigidBody () {}
-
-RigidBody::~RigidBody() {}
-
-
-Collider::Collider(float X, float Y, float W, float H) {
-    x = X; y = Y;
-    width = W; height = H;
-    sf::IntRect r1(x, y, width, height);
-}
-
-bool Collider::detectCollision(Collider *Object) {
-    if (r1.intersects(Object->r1))//если прямоугольники спрайтов пересекаются
-         return true;
-}
-
-Collider::~Collider() {}
-
-
 Render::Render (std::string File, float X, float Y, float W, float H) {
     F = File;
+    sf::IntRect rect(X, Y, W, H);
     width = W; height = H;
     image.loadFromFile(F);
     texture.loadFromImage(image);
     sprite.setTexture(texture);
     x = X; y = Y;
-    sprite.setTextureRect(sf::IntRect(0, 0, width, height));
+    sprite.setTextureRect(sf::IntRect(x, y, width, height));
 
     ComponentType::str = "Render";
 }
@@ -41,6 +23,23 @@ Render::Render (std::string File, float X, float Y, float W, float H) {
 Render::~Render() {}
 
 void Render::draw () {}
+
+
+RigidBody::RigidBody () {}
+
+RigidBody::~RigidBody() {}
+
+
+Collider::Collider(Render *Object) {
+    sf::IntRect r1(Object->x, Object->y, Object->width, Object->height);
+}
+
+bool Collider::detectCollision(Render *Object) {
+    if (r1.intersects(sf::IntRect(Object->x, Object->y, Object->width, Object->height)))//если прямоугольники спрайтов пересекаются
+         return true;
+}
+
+Collider::~Collider() {}
 
 GameObject::GameObject() {}
 
