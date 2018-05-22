@@ -12,7 +12,6 @@ public:
     ~ComponentType();
     std::string str;
     virtual std::string MakePolymorphism() {}; //это дерьмо я делаю, чтобы использовать dynamic_cast<>()
-    float x,y, width, height;
 };
 
 class GameObject {
@@ -22,7 +21,7 @@ public:
     std::vector<ComponentType*> components;
 
     void addComponent(ComponentType &component);
-    ComponentType *getComponent(int a);
+    ComponentType *getComponent(std::string Type);
     void translate();
     void rotate();
 
@@ -52,7 +51,6 @@ public:
 
 class RigidBody : public ComponentType {
 public:
-
     RigidBody();
     ~RigidBody();
     std::string MakePolymorphism() {};
@@ -67,7 +65,7 @@ public:
     Collider(Render *Object);
     ~Collider();
     sf::IntRect r1;
-    bool detectCollision(Render *Object);
+    bool detectCollision(GameObject *Object);
     std::string MakePolymorphism() {};
 };
 

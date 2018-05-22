@@ -1,33 +1,30 @@
-
-void make_Render(GameObject *obj, Application& app) {
-    for (int i = 0; i < obj->components.size(); i++) {
-        ComponentType *a;
-        a = obj->getComponent(i);
-        if (Render *R_obj = dynamic_cast<Render *>(a)) {
-            std::cout << "Sheet"<< "\n";
-            app.R_Objects.push_back(R_obj);
-        }
-    }
+//функции для конвертирования компонент в соответствующие дочернии классы
+Render *make_Render(GameObject *obj, Application& app) {
+    ComponentType *CT_obj = obj->getComponent("Render");
+    Render *R_obj = dynamic_cast<Render *>(CT_obj);
+    app.R_Objects.push_back(R_obj);
+    return R_obj;
 }
 
-void make_Collider(GameObject *obj, Application& app) {
-    for (int i = 0; i < obj->components.size(); i++) {
-        ComponentType *a;
-        a = obj->getComponent(i);
-        if (Collider *C_obj = dynamic_cast<Collider *>(a)) {
-            std::cout << "Sheet"<< "\n";
-            app.C_Objects.push_back(C_obj);
-        }
-    }
+Collider *make_Collider(GameObject *obj, Application& app) {
+    ComponentType *CT_obj = obj->getComponent("Collider");
+    Collider *C_obj = dynamic_cast<Collider *>(CT_obj);
+    app.C_Objects.push_back(C_obj);
+    return C_obj;
 }
 
-GameObject* create_R_Object(std::string File, float X, float Y, float W, float H, Application& app){
-    GameObject Object;
-    Render Render_Object(File, X, Y, W, H);
-    Object.addComponent(Render_Object);
-    make_Render(&Object, app );
-    return &Object;
+RigidBody *make_RigidBody(GameObject *obj, Application& app) {
+    ComponentType *CT_obj = obj->getComponent("Rigid_Body");
+    RigidBody *RB_obj = dynamic_cast<RigidBody *>(CT_obj);
+    return RB_obj;
 }
+//GameObject* create_R_Object(std::string File, float X, float Y, float W, float H, Application& app){
+//    GameObject Object;
+//    Render Render_Object(File, X, Y, W, H);
+//    Object.addComponent(Render_Object);
+//    make_Render(&Object, app );
+//    return &Object;
+//}
 //
 //GameObject* create_R_and_C_Object(std::string File, float X, float Y, float W, float H) {
 //    GameObject Object;

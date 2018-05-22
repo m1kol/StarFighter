@@ -31,7 +31,7 @@ public:
         return object;
     }
 
-//    std::vector<GameObject*> allObjects;
+    std::vector<GameObject*> allObjects;
     std::vector<Render*>R_Objects;
     std::vector<Collider*>C_Objects;
     RenderWindow* getWindow() {

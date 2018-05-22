@@ -31,20 +31,21 @@ void  Application::run() {
         ptrwindow->display();
     }
 }
-
-/*void Application::update() {
-    int a = C_Objects.size();
-    for (int i = 0; i < a; ++i) {
-        for (int k = 0; k < a; ++k) {
+void Application::update() {
+    int a = allObjects.size();
+    for (int i = 0; i < a; i++) {
+        for (int k = 0; k < a; k++) {
             if(i!=k){
                 std::cout << "PredCollision"<< "\n";
-                if(C_Objects[i]->detectCollision(R_Objects[k])) {
+                ComponentType *c = allObjects[i]->getComponent("Collider");
+                Collider *C = dynamic_cast<Collider*>(c);
+                if(C->detectCollision(allObjects[k])) {
                     std::cout << "Collision"<< "\n";
                 }
             }
         }
     }
-}*/
+}
 
 Application::~Application() {
     delete ptrwindow;
