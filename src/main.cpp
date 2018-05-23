@@ -3,40 +3,34 @@
 
 int main() {
 
-    auto& s = Application::getInst();
-//Первый пробный объект
-    GameObject Ball;
-    Render Render_Ball("hero.png",0,0,97.0, 97.0);
-    Ball.addComponent(Render_Ball);
-    Collider Collider_Ball(&Render_Ball);
-    Ball.addComponent(Collider_Ball);
-    Render *a = make_Render(&Ball, s);
-    std::cout << a->height<<"\n";
-    make_Collider(&Ball,s);
-//Второй пробный объект
-    GameObject Ball1;
-    Render Render_Ball1("spaceship.png",0,0,96.0, 96.0);
-    Ball1.addComponent(Render_Ball1);
-    Collider Collider_Ball1(&Render_Ball1);
-    Ball1.addComponent(Collider_Ball1);
-    make_Render(&Ball1, s);
-    make_Collider(&Ball1, s);
+    auto& app = Application::getInst();
+
+    GameObject Background;
+    Render Render_Background("spaceart.png",0,0,1600.0, 1066.0, 0, 0);
+    Background.addComponent(Render_Background);
+    make_Render(&Background, app);
 
 
-    ComponentType *R_Ball = Ball.getComponent("Render");
-    std::cout  << R_Ball->str<<"\n";
-    ComponentType *C_Ball = Ball.getComponent("Collider");
-    std::cout << C_Ball->str<<"\n";
+    GameObject Hero;
+    Render Render_Hero("hero.png",0,0,97.0, 97.0, 350, 350);
+    Hero.addComponent(Render_Hero);
+    Collider Collider_Hero;
+    Hero.addComponent(Collider_Hero);
+    make_Render(&Hero, app);
+    make_Collider(&Hero,app);
 
-    s.allObjects.push_back(&Ball);
-    s.allObjects.push_back(&Ball1);
 
-//    GameObject* Test;
-//    Test = create_R_and_C_Object("hero.png",250,250,96.0, 96.0);
-//    make_Render(Test, s);
-    s.run();
-    s.update();
-    std::cout << Collider_Ball.detectCollision(&Ball1)<< "\n";
+    app.allObjects.push_back(&Background);
+    app.allObjects.push_back(&Hero);
+//    for (int i = 0; i <Ball.components.size() ; i++) {
+//        std::cout << Ball.components[i]->str << "\n";
+//        std::cout << Ball.components[0]->height <<"\n";
+//    }
+
+    app.run();
+//    s.update();
+
+//    std::cout << Collider_Ball.detectCollision(&Ball1)<< "\n";
 
 //
 //    std::vector<ComponentType*> C;
@@ -44,10 +38,14 @@ int main() {
 //    std::cout << C.size()<< "\n";
 //
 //
-    std::vector<Render*> R;
-    R = s.R_Objects;
-    std::cout << R.size()<< "\n";
-    fflush(0);
+//    for (int i = 0; i <Ball.components.size() ; i++) {
+//        std::cout << Ball.components[i]->str << "\n";
+//    }
+//
+//    std::vector<Render*> R;
+//    R = s.R_Objects;
+//    std::cout << R.size()<< "\n";
+//    fflush(0);
 
     return 0;
 }

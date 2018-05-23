@@ -13,7 +13,7 @@ void  Application::run() {
         Clock clock;
         time = clock.getElapsedTime().asMicroseconds(); //дать прошедшее время в микросекундах
         clock.restart(); //перезагружает время
-        time = time/600; //скорость игры
+        time = time/100; //скорость игры
         Event event;
 
         while (ptrwindow->pollEvent(event))
@@ -21,7 +21,7 @@ void  Application::run() {
             if (event.type == Event::Closed)
                 ptrwindow->close();
         }
-        Render* a = R_Objects[0];
+        Render* a = R_Objects[1];
         SIMPLEANIMATION(a->sprite)
 
         ptrwindow->clear();
@@ -31,21 +31,21 @@ void  Application::run() {
         ptrwindow->display();
     }
 }
-void Application::update() {
-    int a = allObjects.size();
-    for (int i = 0; i < a; i++) {
-        for (int k = 0; k < a; k++) {
-            if(i!=k){
-                std::cout << "PredCollision"<< "\n";
-                ComponentType *c = allObjects[i]->getComponent("Collider");
-                Collider *C = dynamic_cast<Collider*>(c);
-                if(C->detectCollision(allObjects[k])) {
-                    std::cout << "Collision"<< "\n";
-                }
-            }
-        }
-    }
-}
+//void Application::update() {
+//    int a = allObjects.size();
+//    for (int i = 0; i < a; i++) {
+//        for (int k = 0; k < a; k++) {
+//            if(i!=k){
+//                std::cout << "PredCollision"<< "\n";
+//                ComponentType *c = allObjects[i]->getComponent("Collider");
+//                Collider *C = dynamic_cast<Collider*>(c);
+//                if(C->detectCollision(allObjects[k])) {
+//                    std::cout << "Collision"<< "\n";
+//                }
+//            }
+//        }
+//    }
+//}
 
 Application::~Application() {
     delete ptrwindow;
