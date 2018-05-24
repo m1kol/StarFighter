@@ -40,6 +40,7 @@ public:
     }
     void  run();
     void update();
+    bool detectCollision(GameObject *o_1, GameObject *o_2);
     float time;
 
 };

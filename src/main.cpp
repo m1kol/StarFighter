@@ -39,7 +39,8 @@ int main() {
 //    }
 
     app.run();
-//    s.update();
+    std::cout << app.detectCollision(&Hero, &Star) << "\n";
+    app.update();
 
 //    std::cout << Collider_Ball.detectCollision(&Ball1)<< "\n";
 
