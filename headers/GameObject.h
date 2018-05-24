@@ -61,14 +61,7 @@ public:
 
     Collider();
     ~Collider();
-    /*bool detectCollision(GameObject *Object, Application &app);*/
     std::string MakePolymorphism() {};
-    int a =1;
 };
-
-
-
-
-
 
 #endif

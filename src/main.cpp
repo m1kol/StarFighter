@@ -33,31 +33,10 @@ int main() {
     app.allObjects.push_back(&Background);
     app.allObjects.push_back(&Hero);
     app.allObjects.push_back(&Star);
-//    for (int i = 0; i <Ball.components.size() ; i++) {
-//        std::cout << Ball.components[i]->str << "\n";
-//        std::cout << Ball.components[0]->height <<"\n";
-//    }
 
     app.run();
-    std::cout << app.detectCollision(&Hero, &Star) << "\n";
-    app.update();
-
-//    std::cout << Collider_Ball.detectCollision(&Ball1)<< "\n";
-
-//
-//    std::vector<ComponentType*> C;
-//    C = Ball.components;
-//    std::cout << C.size()<< "\n";
-//
-//
-//    for (int i = 0; i <Ball.components.size() ; i++) {
-//        std::cout << Ball.components[i]->str << "\n";
-//    }
-////
-//    std::vector<RigidBody*> R;
-//    R = app.RB_Objects;
-//    std::cout << R.size()<< "\n";
-//    fflush(0);
+//    std::cout << app.detectCollision(&Hero, &Star)<< "\n";
+//    app.update();
 
     return 0;
 }

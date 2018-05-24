@@ -17,8 +17,8 @@ void  Application::run() {
             if(ID == I->id ) {
                 ComponentType* CT_I = I->getComponent("Render");
                 Render *R_I = dynamic_cast<Render*>(CT_I);
-                int x= 355;
-                int y = 340;
+                int x= 250;
+                int y = 250;
                 R_I->sprite.move(x, y);
                 R_I->coord_x = x;
                 R_I->coord_y = y;
@@ -30,22 +30,23 @@ void  Application::run() {
 
 
     while (ptrwindow->isOpen()) {
-            Clock clock;
-            time = clock.getElapsedTime().asMicroseconds(); //дать прошедшее время в микросекундах
-            clock.restart(); //перезагружает время
-            time = time / 100; //скорость игры
-            Event event;
-            float CurrentFrame;
 
-            while (ptrwindow->pollEvent(event)) {
-                if (event.type == Event::Closed)
-                    ptrwindow->close();
+        Clock clock;
+        time = clock.getElapsedTime().asMicroseconds(); //дать прошедшее время в микросекундах
+        clock.restart(); //перезагружает время
+        time = time / 100; //скорость игры
+        Event event;
+        float CurrentFrame;
+
+        while (ptrwindow->pollEvent(event)) {
+            if (event.type == Event::Closed)
+                ptrwindow->close();
             }
 
             //выполняем логику для 1-го объекта
             Render *a = R_Objects[1];
             DIFFICULTANIMATION(a->sprite)
-
+//            this->update();
             ptrwindow->clear();
             for (int i = 0; i < R_Objects.size(); i++) {
                 ptrwindow->draw(R_Objects[i]->sprite);

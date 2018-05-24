@@ -7,7 +7,7 @@
 #include <iostream>
 #include <typeinfo>
 #include <SFML/Graphics/Rect.hpp>
-#include "script star.h"
+#include "logic.h"
 
 using namespace sf;
 //Класс синглтон, который дает возможность создать единственное окно, в котором будут происходить все действия и отрисовываться объекты

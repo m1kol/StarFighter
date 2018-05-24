@@ -43,28 +43,6 @@ Collider::Collider() {
     ComponentType::str = "Collider";
 }
 
-/*bool Collider::detectCollision(GameObject *Object, Application &app) {
-    ComponentType *c = Object->getComponent("Render");
-    Render *C = dynamic_cast<Render*>(c);
-    GameObject *I;
-    for (int i = 0; i < app.allObjects.size() ; i++) {
-        I = app.allObjects[i];
-        if(this->id == I->id ) {
-           ComponentType* CT_I = I->getComponent("Render");
-           Render *B = dynamic_cast<Render*>(CT_I);
-            }
-        }
-    float a = abs(C->coord_x - B->coord_x );
-    float b = abs(C->coord_y - B->coord_y );
-    float sumw = (C->width + B->width)/2;
-    float sumh = (C->height + B->height)/2;
-
-//    std::cout << "B->coord_y: "<< B->coord_y<< "\n";
-
-    if ((a <= sumw) or (b <= sumh))//если прямоугольники спрайтов пересекаются
-         return true;
-}*/
-
 Collider::~Collider() {}
 
 GameObject::GameObject(int ID) {
