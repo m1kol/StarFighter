@@ -3,7 +3,9 @@
 #include <cmath>
 
 
-ComponentType::ComponentType() {}
+
+ComponentType::ComponentType() {
+}
 
 ComponentType::~ComponentType() {}
 
@@ -26,12 +28,8 @@ Render::Render (std::string File, float X, float Y, float W, float H, int pos_x,
 
 Render::~Render() {}
 
-void Render::draw () {}
-
 
 RigidBody::RigidBody (int Dx, int Dy) {
-//    coord_x = Object->coord_x;
-//    coord_y = Object->coord_y;
     dx = Dx;
     dy = Dy;
     ComponentType::str = "Rigid_Body";
@@ -44,14 +42,18 @@ Collider::Collider() {
 
     ComponentType::str = "Collider";
 }
-//здесь dynamic_cast() работает неправильно
-bool Collider::detectCollision(GameObject *Object) {
+
+/*bool Collider::detectCollision(GameObject *Object, Application &app) {
     ComponentType *c = Object->getComponent("Render");
     Render *C = dynamic_cast<Render*>(c);
-    std::cout << C->height<< "\n";
-    ComponentType *A = dynamic_cast<ComponentType*> (this);
-    std::cout << A->str<<"end" << "\n";
-    Render *B = static_cast<Render*>(A);
+    GameObject *I;
+    for (int i = 0; i < app.allObjects.size() ; i++) {
+        I = app.allObjects[i];
+        if(this->id == I->id ) {
+           ComponentType* CT_I = I->getComponent("Render");
+           Render *B = dynamic_cast<Render*>(CT_I);
+            }
+        }
     float a = abs(C->coord_x - B->coord_x );
     float b = abs(C->coord_y - B->coord_y );
     float sumw = (C->width + B->width)/2;
@@ -61,16 +63,19 @@ bool Collider::detectCollision(GameObject *Object) {
 
     if ((a <= sumw) or (b <= sumh))//если прямоугольники спрайтов пересекаются
          return true;
-}
+}*/
 
 Collider::~Collider() {}
 
-GameObject::GameObject() {}
+GameObject::GameObject(int ID) {
+    id = ID;
+}
 
 GameObject::~GameObject() {}
 
 void GameObject::addComponent (ComponentType &component) {
     components.push_back(&component);
+    component.id = this->id;
 }
 
 ComponentType *GameObject::getComponent(std::string Type) {
@@ -101,6 +106,4 @@ ComponentType *GameObject::getComponent(std::string Type) {
         }
     }
 
-void GameObject::translate () {}
 
-void GameObject::rotate () {}

@@ -16,6 +16,7 @@ Collider *make_Collider(GameObject *obj, Application& app) {
 RigidBody *make_RigidBody(GameObject *obj, Application& app) {
     ComponentType *CT_obj = obj->getComponent("Rigid_Body");
     RigidBody *RB_obj = dynamic_cast<RigidBody *>(CT_obj);
+    app.RB_Objects.push_back(RB_obj);
     return RB_obj;
 }
 //GameObject* create_R_Object(std::string File, float X, float Y, float W, float H, Application& app){

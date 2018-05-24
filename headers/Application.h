@@ -34,6 +34,7 @@ public:
     std::vector<GameObject*> allObjects;
     std::vector<Render*>R_Objects;
     std::vector<Collider*>C_Objects;
+    std::vector<RigidBody*>RB_Objects;
     RenderWindow* getWindow() {
         return Application::ptrwindow;
     }
